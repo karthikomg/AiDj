@@ -33,7 +33,6 @@ function gotPoses(results)
 {
   if(results.length > 0)
   {
-	console.log(results);
 	scoreRightWrist =  results[0].pose.keypoints[10].score;
 	scoreLeftWrist =  results[0].pose.keypoints[9].score;
 	console.log("scoreRightWrist = " + scoreRightWrist + " scoreLeftWrist = " + scoreLeftWrist);
@@ -89,11 +88,11 @@ function draw() {
 	if(scoreLeftWrist > 0.2)
 	{
 		circle(leftWristX,leftWristY,20);
-		InNumberleftWristY = Number(leftWristY); 
-		remove_decimals = floor(InNumberleftWristY);
-		volume = remove_decimals/500;
-		document.getElementById("volume").innerHTML = "Volume = " + volume;		
-		song.setVolume(volume);	
+		InNumberleftWristY = Number(leftWristY);
+		new_leftWristY = floor(InNumberleftWristY *2);
+		leftWristY_divide_1000 = new_leftWristY/1000;
+		document.getElementById("volume").innerHTML = "Volume = " + leftWristY_divide_1000;		
+		song.setVolume(leftWristY_divide_1000);	
 	}
 
 }
